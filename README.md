@@ -136,7 +136,7 @@ En bioinformática, el análisis de datos biológicos requiere herramientas que 
 
 ## **3. Ejemplo práctico en bioinformática**
 
-¡Claro! **Viralrecon** es un pipeline de Nextflow diseñado para el análisis de datos de secuenciación de virus, como SARS-CoV-2. Este pipeline integra múltiples herramientas bioinformáticas para realizar el ensamblaje del genoma viral, la identificación de variantes y la generación de reportes.
+**Viralrecon** es un pipeline de Nextflow diseñado para el análisis de datos de secuenciación de virus, como SARS-CoV-2. Este pipeline integra múltiples herramientas bioinformáticas para realizar el ensamblaje del genoma viral, la identificación de variantes y la generación de reportes.
 
 A continuación, te proporciono un ejemplo práctico de cómo usar **Viralrecon** con Nextflow, Docker y Singularity.
 
