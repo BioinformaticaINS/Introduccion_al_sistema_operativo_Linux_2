@@ -1,4 +1,4 @@
-# Introduccion_al_sistema_operativo_Linux_2
+# Introducción al sistema operativo Linux 2
 
 ## **1. Introducción**
 
