@@ -148,9 +148,9 @@ En bioinformática, el análisis de datos biológicos requiere herramientas que 
 
 ### Decarga del pipeline
 
-´´´
+```
 nextflow run nf-core/viralrecon -profile test,docker --outdir test_ins
-´´´
+```
 
 Comandos típicos para análisis de lecturas provenientes de tecnología Illumina:
 
