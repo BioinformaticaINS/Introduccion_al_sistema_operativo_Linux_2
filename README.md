@@ -144,7 +144,7 @@ En bioinformática, el análisis de datos biológicos requiere herramientas que 
 
 **Nanopore**
 
-ª[nanopore](https://raw.githubusercontent.com/nf-core/viralrecon/2.6.0//docs/images/nf-core-viralrecon_metro_map_nanopore.png)
+[nanopore](https://raw.githubusercontent.com/nf-core/viralrecon/2.6.0//docs/images/nf-core-viralrecon_metro_map_nanopore.png)
 
 ### Decarga del pipeline
 
