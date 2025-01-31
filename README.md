@@ -138,9 +138,75 @@ En bioinformática, el análisis de datos biológicos requiere herramientas que 
 
 **Viralrecon** es un pipeline de Nextflow diseñado para el análisis de datos de secuenciación de virus, como SARS-CoV-2. Este pipeline integra múltiples herramientas bioinformáticas para realizar el ensamblaje del genoma viral, la identificación de variantes y la generación de reportes.
 
-A continuación, te proporciono un ejemplo práctico de cómo usar **Viralrecon** con Nextflow, Docker y Singularity.
+**Illumina**
+
+![illumina](https://raw.githubusercontent.com/nf-core/viralrecon/2.6.0//docs/images/nf-core-viralrecon_metro_map_illumina.png)
+
+**Nanopore**
+
+ª[nanopore](https://raw.githubusercontent.com/nf-core/viralrecon/2.6.0//docs/images/nf-core-viralrecon_metro_map_nanopore.png)
+
+### Decarga del pipeline
+
+´´´
+nextflow run nf-core/viralrecon -profile test,docker --outdir test_ins
+´´´
+
+Comandos típicos para análisis de lecturas provenientes de tecnología Illumina:
+
+```
+# Shotgun
+nextflow run nf-core/viralrecon \
+    --input samplesheet.csv \
+    --outdir <OUTDIR> \
+    --platform illumina \
+    --protocol metagenomic \
+    --genome 'MN908947.3' \
+    -profile <docker/singularity/podman/conda/institute>
+```
+
+```
+# amplicón
+nextflow run nf-core/viralrecon \
+    --input samplesheet.csv \
+    --outdir <OUTDIR> \
+    --platform illumina \
+    --protocol amplicon \
+    --genome 'MN908947.3' \
+    --primer_set artic \
+    --primer_set_version 3 \
+    --skip_assembly \
+    -profile <docker/singularity/podman/conda/institute>
+```
+
+## Nanopor
+
+```
+# amplicón
+nextflow run nf-core/viralrecon \
+    --input samplesheet.csv \
+    --outdir <OUTDIR> \
+    --platform nanopore \
+    --genome 'MN908947.3' \
+    --primer_set_version 3 \
+    --fastq_dir fastq_pass/ \
+    --fast5_dir fast5_pass/ \
+    --sequencing_summary sequencing_summary.txt \
+    -profile <docker/singularity/podman/conda/institute>
+```
+
+Vamos a requerir de un script en Python [fastq_dir_to_samplesheet.py]([wget -L https://raw.githubusercontent.com/nf-core/viralrecon/master/bin/fastq_dir_to_samplesheet.py](https://github.com/nf-core/viralrecon/blob/master/bin/fastq_dir_to_samplesheet.py))
+
+
+```
+wget -L https://raw.githubusercontent.com/nf-core/viralrecon/master/bin/fastq_dir_to_samplesheet.py
+./fastq_dir_to_samplesheet.py raw_data samplesheet.csv
+
+```
 
 ---
+
+A continuación, te proporciono un ejemplo práctico de cómo usar **Viralrecon** con Nextflow, Docker y Singularity.
 
 ### Análisis de datos de SARS-CoV-2 con Viralrecon**
 
@@ -158,21 +224,18 @@ A continuación, te proporciono un ejemplo práctico de cómo usar **Viralrecon*
 ##### **2.1. Crear un directorio de trabajo**
 1. Crea un directorio para el proyecto:
    ```bash
+   conda create -n nf-core 
+   conda activate nf-core
    mkdir viralrecon_analysis
    cd viralrecon_analysis
    ```
 
 ##### **2.2. Preparar los datos**
+
 1. Coloca tus archivos FASTQ en un directorio llamado `fastq`:
    ```bash
    mkdir fastq
    cp /ruta/a/tus/archivos/*.fastq.gz fastq/
-   ```
-2. Descarga el genoma de referencia de SARS-CoV-2:
-   ```bash
-   wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.gz
-   gunzip GCF_009858895.2_ASM985889v3_genomic.fna.gz
-   mv GCF_009858895.2_ASM985889v3_genomic.fna reference.fasta
    ```
 
 ---
